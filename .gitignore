@@ -1,92 +1,23 @@
-# ==========================================
-# VL-JEPA-base-CCTV  —  .gitignore
-# ==========================================
+# Environments
+.venv/
+env/
+venv/
 
-# ── Python ────────────────────────────────
+# Python cache
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
-.Python
+*$py.class
 
-# ── Virtual environments ──────────────────
-.venv/
-venv/
-env/
-ENV/
-
-# ── Jupyter ───────────────────────────────
+# Jupyter Notebook
 .ipynb_checkpoints/
-*/.ipynb_checkpoints/
 
-# ── Dataset files (too large for GitHub) ──
-# Raw KTH videos
+# Datasets, Features, and Checkpoints
 kth_videos/
-
-# Processed feature CSVs (regenerate via rebuild_dataset_from_sequences.py)
-kth_temporal_features.csv
-kth_cctv_features.csv
-kth_motion_features2.csv
-kth_spatial_motion3.csv
-ssv2_metadata.csv
-
-# SSv2 — all related files and directories
 ssv2_npy_sequences/
-ssv2_videos/
-ssv2_frames/
-ssv2_data/
-ssv2_dataset/
-ssv2_metadata.csv
-ssv2_labels.json
-ssv2_train.json
-ssv2_val.json
-ssv2_test.json
-ssv2_*.json
-ssv2_*.csv
-ssv2_*.npy
-ssv2_*.pt
-something-something-v2*/
-
-# PyTorch dataset caches
+jepa_features/
+*.csv
 *.pt
-kth_temporal_dataset.pt
-ssv2_optimized_dataset.pt
+*.npz
 
-# ── Model weights & checkpoints ───────────
-# Checkpoint from training (regenerate by training)
-checkpoint_latest.npz
-
-# Saved model for backend (regenerate via save_model_for_backend cell)
-Playground/numpy_model.npz
-
-# ── Frontend build artefacts ──────────────
-frontend/node_modules/
-frontend/dist/
-
-# ── Temporary / generated patch scripts ───
-# (kept locally, not needed by collaborators)
-patch_model03.py
-patch_checkpoint.py
-patch_checkpoint_v2.py
-patch_notebook_dump.py
-check_dump.py
-verify_patch.py
-augment_dataset.py
-
-# ── Misc large / binary files ─────────────
-*.webp
-*.pdf
-VL-JEPA_Pre_Final_Review.pdf
-cctv Ui.webp
-real_pixels.webp
-output.png
-
-# ── Windows ───────────────────────────────
+# Windows
 desktop.ini
-Thumbs.db
-
-# ── Editor / IDE ──────────────────────────
-.vscode/
-.idea/
-*.suo
-*.user
