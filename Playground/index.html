@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VL-JEPA Video Predictor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">VL-JEPA action predictor</p>
+            <h1>Video feed analysis</h1>
+          </div>
+          <div class="status-pill" id="modelStatus">Ready</div>
+        </div>
+
+        <section class="feed-layout">
+          <!-- VIDEO AREA -->
+          <div class="feed-zone" id="dropZone">
+            <video id="videoPreview" playsinline muted controls></video>
+
+            <img
+              id="emptyFrame"
+              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80"
+              alt="Video analysis workspace"
+            />
+
+            <div class="feed-overlay">
+              <span id="frameState">Waiting for video</span>
+              <span id="tokenCount">--</span>
+            </div>
+
+            <label class="upload-hitbox" for="videoInput">
+              <span>Drop video here or choose file</span>
+              <strong>MP4, MOV, WEBM</strong>
+            </label>
+
+            <input id="videoInput" type="file" accept="video/*" />
+          </div>
+
+          <!-- CONTROL PANEL -->
+          <aside class="control-rail">
+            <div class="panel">
+              <h2>Predict</h2>
+
+              <label>
+                Backend endpoint
+                <input
+                  id="endpointInput"
+                  type="url"
+                  value="/predict"
+                  placeholder="/predict"
+                />
+              </label>
+
+              <label>
+                Query prompt
+                <input
+                  id="queryInput"
+                  type="text"
+                  value="Predict action"
+                />
+              </label>
+
+              <button id="predictBtn">Run prediction</button>
+            </div>
+          </aside>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="timeline-band">
+          <div class="timeline-head">
+            <h2>Frame stream</h2>
+            <span id="streamHealth">Ready</span>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+      </section>
+
+      <!-- RESULTS PANEL -->
+      <aside class="results">
+        <div class="result-header">
+          <div>
+            <p class="eyebrow">Prediction</p>
+            <h2 id="primaryAction">No action yet</h2>
+          </div>
+          <strong id="primaryScore">--</strong>
+        </div>
+
+        <div class="confidence-list" id="confidenceList"></div>
+
+        <div class="signal-grid">
+          <div>
+            <span>Visible motion</span>
+            <strong id="motionScore">--</strong>
+          </div>
+          <div>
+            <span>Occlusion load</span>
+            <strong id="occlusionScore">--</strong>
+          </div>
+          <div>
+            <span>Temporal gaps</span>
+            <strong id="gapScore">--</strong>
+          </div>
+          <div>
+            <span>Prediction mode</span>
+            <strong id="modeScore">Live</strong>
+          </div>
+        </div>
+
+        <div class="model-note">
+          <h2>Pipeline</h2>
+          <p>
+            The model analyzes video frames and predicts actions over time,
+            handling occlusion, blur, and missing frames internally.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
