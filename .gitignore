@@ -21,3 +21,15 @@ jepa_features/
 
 # Windows
 desktop.ini
+
+scratch.py
+temp.ipynb
+notebook_dump.py
+notebook_dump_2.py
+patch_add_save_cell.py
+model.ipynb
+model_2.ipynb
+model-03.ipynb
+extract.py
+inject_roc.py
+frontend.txt
